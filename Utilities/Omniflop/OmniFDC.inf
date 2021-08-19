@@ -1,0 +1,76 @@
+;********************************************************************************/
+;*										*/
+;*	NAME	  : OmniFDC.inf							*/
+;*										*/
+;*	FUNCTION  : Installation inf file for OmniFlop Floppy Disk Controller	*/
+;*		    Driver							*/
+;*										*/
+;*	CREATED	  : 18 Nov 2008		Jason Watton				*/
+;*										*/
+;*	NOTES	  : Edit using tabstops of 4 for correct alignment.		*/
+;*		    .c header files must not use C++ language, e.g. // comment	*/
+;*										*/
+;********************************************************************************/
+;*										*/
+;*	COPYRIGHT:								*/
+;*	This source code and the associated object file are copyright (C) 2008	*/
+;*	Jason Watton. Use, duplication and disclosure are subject to a License	*/
+;*	Agreement with the copyright holder.					*/
+;*										*/
+;*	The author of this work is Jason Watton, who asserts his right to be	*/
+;*	identified as such.							*/
+;*										*/
+;********************************************************************************/
+
+[Version]
+Signature="$WINDOWS NT$"
+;Do not use spaces in Class [Code]
+;User-friendly class name is recorded in Registry entry
+Class=fdc
+ClassGuid={4D36E969-E325-11CE-BFC1-08002BE10318}
+Provider=%ProviderName%
+LayoutFile=layout.inf
+DriverVer=01/12/2012,3.00.0002.2000
+
+;---------------------------------------------------------------;
+; Source files, location & root of products
+;---------------------------------------------------------------;
+
+[fdc_copyfiles]
+OmniFDC.sys
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[DestinationDirs]
+fdc_copyfiles=12
+DefaultDestDir=12
+
+[Manufacturer]
+%GenManufacturer%=fdc_device,ntamd64
+
+[fdc_device]
+%fdc_devdesc%=fdc_install,*PNP0700
+
+[fdc_device.ntamd64]
+%fdc_devdesc%=fdc_install,*PNP0700
+
+[fdc_install]
+CopyFiles=fdc_copyfiles
+
+[fdc_install.Services]
+AddService=fdc,2,fdc_ServiceInstallSection
+
+[fdc_ServiceInstallSection]
+DisplayName=%fdc_ServiceDesc%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary = %12%\OmniFDC.sys
+
+[Strings]
+ProviderName="Jason Watton"
+FdcClassName="Floppy disk controllers"
+GenManufacturer="Sherlock Consulting Limited"
+fdc_devdesc="OmniFDC Extended floppy disk controller"
+fdc_ServiceDesc="OmniFDC Floppy Disk Controller Driver"

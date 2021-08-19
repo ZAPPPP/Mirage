@@ -1,0 +1,155 @@
+;********************************************************************************/
+;*										*/
+;*	NAME	  : OmniFlop.inf						*/
+;*										*/
+;*	FUNCTION  : Installation inf file for OmniFlop Floppy Disk Drive Driver	*/
+;*										*/
+;*	CREATED	  : 26 Dec 2004		Jason Watton				*/
+;*										*/
+;*	NOTES	  : Edit using tabstops of 4 for correct alignment.		*/
+;*		    .c header files must not use C++ language, e.g. // comment	*/
+;*										*/
+;********************************************************************************/
+;*										*/
+;*	COPYRIGHT:								*/
+;*	This source code and the associated object file are copyright (C) 2004	*/
+;*	Jason Watton. Use, duplication and disclosure are subject to a License	*/
+;*	Agreement with the copyright holder.					*/
+;*										*/
+;*	The author of this work is Jason Watton, who asserts his right to be	*/
+;*	identified as such.							*/
+;*										*/
+;********************************************************************************/
+
+[Version]
+Signature = "$Windows NT$" 
+;Do not use spaces in Class [Code]
+;User-friendly class name is recorded in Registry entry
+Class = FloppyDisk
+ClassGuid = {4D36E980-E325-11CE-BFC1-08002BE10318}
+Provider=%ProviderName%
+;CatalogFile=ddk_sample.cat
+DriverVer=01/12/2012,3.00.0002.2000
+
+;---------------------------------------------------------------;
+; Source files, location & root of products
+;---------------------------------------------------------------;
+
+[SourceDisksNames]
+0="OmniFlop Installation Disk",,,
+;Windows 98 takes the path and uses it explicitly - leading '\' means root
+;1="OmniFlop Installation Disk (Windows 98SE)",,,Win98
+;Windows NT always uses path relative to installation path - leading '\' means installation root
+;2="OmniFlop Installation Disk (Windows NT/2K/XP)",,,\WinNT
+
+[SourceDisksFiles]
+OmniFlop.inf = 0
+OmniFlop.sys = 0
+;OmniFlop.sys = 0,\WinNT
+
+[OmniFlop_FileList.inf]
+;OmniFlop.inf
+
+[OmniFlop_FileList.sys]
+OmniFlop.sys
+
+;---------------------------------------------------------------;
+; Class
+;---------------------------------------------------------------;
+
+;Pre-defined in all respects. Do not change.
+
+; 95/98/ME Style
+;[ClassInstall]
+;Addreg=Class_AddReg
+
+; NT/2000 Style
+;[ClassInstall32]
+;Addreg=Class_AddReg.NT
+
+;[Class_AddReg]
+;HKR,,,,"General Purpose I/O"
+;HKR,,Icon,,"-23"
+
+;[Class_AddReg.NT]
+;HKR,,,,"General Purpose I/O"
+;HKR,,Icon,,"-26"
+
+;---------------------------------------------------------------;
+; Destination files, location & root of products
+;---------------------------------------------------------------;
+
+[DestinationDirs]
+OmniFlop_FileList.inf=10,inf
+OmniFlop_FileList.sys=12
+DefaultDestDir=12
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;---------------------------------------------------------------;
+; Manufacturer section
+;---------------------------------------------------------------;
+
+[Manufacturer]
+%GenManufacturer%=floppy_device,ntamd64
+
+;---------------------------------------------------------------;
+; Models section
+;---------------------------------------------------------------;
+
+[floppy_device]
+%devdesc%=OmniFlop_install,*PNP0701
+%devdesc%=OmniFlop_install,*PNP0702
+%devdesc%=OmniFlop_install,*PNP0703
+%devdesc%=OmniFlop_install,*PNP0704
+%devdesc%=OmniFlop_install,GenFloppyDisk
+
+[floppy_device.ntamd64]
+%devdesc%=OmniFlop_install,*PNP0701
+%devdesc%=OmniFlop_install,*PNP0702
+%devdesc%=OmniFlop_install,*PNP0703
+%devdesc%=OmniFlop_install,*PNP0704
+%devdesc%=OmniFlop_install,GenFloppyDisk
+
+;---------------------------------------------------------------;
+; DDInstall section
+;---------------------------------------------------------------;
+
+; 95/98/ME Style
+;[OmniFlop_install]
+;CopyFiles=OmniFlop_FileList.inf,OmniFlop_FileList.sys
+
+; NT/2000 Style, all variants
+[OmniFlop_install]
+CopyFiles=OmniFlop_FileList.inf,OmniFlop_FileList.sys
+AddReg=OmniFlop_AddReg
+
+[OmniFlop_install.Services]
+AddService=flpydisk,2,OmniFlop_ServiceInstallSection
+
+[DefaultInstall]
+CopyFiles=OmniFlop_FileList.inf,OmniFlop_FileList.sys
+
+[DefaultInstall.Services]
+AddService=flpydisk,2,OmniFlop_ServiceInstallSection
+
+[OmniFlop_ServiceInstallSection]
+DisplayName    = %OmniFlop_ServiceDesc%
+Description    = "OmniFlop enhanced access to Floppy Disks"
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\OmniFlop.sys
+;LoadOrderGroup = Base
+
+[OmniFlop_AddReg]
+HKLM,"System\CurrentControlSet\Services\Flpydisk","DebugLevel",0x10001,0x00000000
+
+;---------------------------------------------------------------;
+
+[Strings]
+ProviderName="Jason Watton"
+GenManufacturer="Sherlock Consulting Limited"
+devdesc="OmniFlop Enhanced Floppy Disk Drive"
+OmniFlop_ServiceDesc="OmniFlop Enhanced Floppy Disk Driver"
