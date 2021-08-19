@@ -1,0 +1,34 @@
+SP-1: the "Lush" disk
+Bank 1: Top 40 - Pianos, guitars, organs, strings, brass, basses, synths, and more - ideal for the Top 40 gig.
+Bank 2: Fusion - This bank contains a large assortment of unique synth/sampled sounds.
+Bank 3: Orchethna - An interesting array of normal and heavily processed orchestral and percussion sounds.
+
+SP-2: the "X" disk
+Bank 1: Helen Wheels - Lots of organs and keyboard sounds make up this bank.
+Bank 2: Vox - Exotic vocal-based sounds make up the bulk of these 32 patches.
+Bank 3: 4X - This bank is a collection of distinctive D-50 type sounds.
+
+SP-3: the "DeMiTy" disk
+Bank 1: Single Act - This bank has lots of pianos, basses, organs, brass, woodwinds, and more.
+Bank 2: D-50/Hybrids - Sounds with the distinctive breathy flavor of the Roland D-50.
+Bank 3: Perks & FX - Drums, percussion instruments, and crazy effects make up this bank of 32 sounds.
+
+SP-4: the "Addy" disk
+Bank 1: 97 Percent Pure - Unique synth, strings, and keyboard sounds created with additive synthesis.
+Bank 2: New Age - Pads and other evocative and ethereal sounds.
+Bank 3: Colors - More exotic and ethereal sounds created with additive synthesis techniques.
+
+SP-5: the "Turbo" disk
+Bank 1: Soul Express - Nice pads and synth effects are featured in this bank.
+Bank 2: LP, Strings, Wind - Latin percussion, strings, pianos, woodwinds, and more.
+Bank 3: Fini - Thirty-two more synth pads and unique synth effects.
+
+SP-6: the "Keyboard" disk
+Bank 1: Classic Keys - A wonderful collection of vintage electric pianos and organs.
+Bank 2: Digital Keys - Keyboard sounds recreated from the Yamaha DX7 and TX81Z, and the Roland D-50.
+Bank 3: Subterranean - Lots of modern bass sounds, with some organs and clavs as well.
+
+SP-7: the "SQ+" disk
+Bank 1: Keys - Lots of wonderful pianos and organs from the Ensoniq SQ-1 Plus.
+Bank 2: Synthestra - Thirty-two synth and keyboard sounds from the SQ-1 Plus.
+Bank 3: FM - An assortment of FM-synth-type sounds, from basses and pianos to the avant garde.
